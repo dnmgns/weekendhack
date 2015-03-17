@@ -32,10 +32,9 @@ if ( file_exists($mediaId.'.lock')) {
 # save the $comment['id'], skip check if already processed
 foreach($comments as $comment) {
 
-	// om dnmgns
+	// If it's me, dnmgns, commenting.
 	if($comment['from']['username'] == 'dnmgns') { continue; }
 
-	// Om inte redan kommenterat
 	// if exists mediaID.lock, bail bail!
 
 	if ( ! in_array($comment['id'], $commentIDs )){
@@ -48,7 +47,7 @@ foreach($comments as $comment) {
 
 		} else {
 			$words = explode(' ', strtolower($comment['text']));
-			if (in_array($correctAnswer1, $words)) {
+			if (in_array($correctAnswer, $words)) {
 				$match = true;
 				$winner = true;
 				echo 'We got a WINNER! '. $comment['from']['username'] . PHP_EOL;
